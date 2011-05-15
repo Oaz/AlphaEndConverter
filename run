@@ -1,0 +1,1 @@
+dmcs -r:nunit.framework -target:library AlphaEndConverter.cs && nunit-console2 AlphaEndConverter.dll
