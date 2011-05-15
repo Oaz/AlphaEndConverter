@@ -16,12 +16,22 @@ using NUnit.Framework;
 // Is there an easy way to refactor your code/algorithm to support this?
 namespace CanUDoIt
 {
-	public class Converter
+	public class GenericConverter
+	{
+		public string Convert(int number, char[] digits)
+		{
+			return ((number >= digits.Length) ?
+                  Convert(number/digits.Length, digits):"")
+                + digits[number%digits.Length].ToString();
+		}
+	}
+
+	public class Converter : GenericConverter
 	{
 		public string Convert(int number)
 		{
       char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', 'y', 'z' };
-			return ((number >= digits.Length) ? Convert(number/digits.Length):"") + digits[number%digits.Length].ToString();
+			return Convert(number, digits);
 		}
 	}
 
