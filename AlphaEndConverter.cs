@@ -21,7 +21,7 @@ namespace CanUDoIt
 		public string Convert(int number)
 		{
       char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', 'y', 'z' };
-			return ((number >= 13) ? Convert(number/13):"") + digits[number%13].ToString();
+			return ((number >= digits.Length) ? Convert(number/digits.Length):"") + digits[number%digits.Length].ToString();
 		}
 	}
 
