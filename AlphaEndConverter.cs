@@ -20,7 +20,8 @@ namespace CanUDoIt
 	{
 		public string Convert(int number)
 		{
-			return "5";
+      char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', 'y', 'z' };
+			return digits[number].ToString();
 		}
 	}
 
@@ -31,7 +32,7 @@ namespace CanUDoIt
 		public virtual void TestsForAlphaEndConversions()
 		{
 			Assert.AreEqual("5", new Converter().Convert(5));
-			//Assert.AreEqual("x", new Converter().Convert(10));
+			Assert.AreEqual("x", new Converter().Convert(10));
 			//Assert.AreEqual("10", new Converter().Convert(13));
 			//Assert.AreEqual("17", new Converter().Convert(20));
 			//Assert.AreEqual("2381", new Converter().Convert(5006));
