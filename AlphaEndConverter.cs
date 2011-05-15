@@ -35,6 +35,15 @@ namespace CanUDoIt
 		}
 	}
 
+	public class BinaryConverter : GenericConverter
+	{
+		public string Convert(int number)
+		{
+      char[] digits = { '0', '1' };
+			return Convert(number, digits);
+		}
+	}
+
 	[TestFixture]
 	public class ConverterTests
 	{
@@ -49,12 +58,12 @@ namespace CanUDoIt
 			Assert.AreEqual("20z1879", new Converter().Convert(9999999));
 		}
 
-//		[Test]
-//		public virtual void TestsForExtraChallenge()
-//		{
-//			Assert.AreEqual("111", new BinaryConverter().Convert(7));
-//			Assert.AreEqual("55", new OctalConverter().Convert(45));
-//			Assert.AreEqual("1f", new HexConverter().Convert(31));
-//		}
+		[Test]
+		public virtual void TestsForExtraChallenge()
+		{
+			Assert.AreEqual("111", new BinaryConverter().Convert(7));
+			//Assert.AreEqual("55", new OctalConverter().Convert(45));
+			//Assert.AreEqual("1f", new HexConverter().Convert(31));
+		}
 	}
 }
