@@ -35,6 +35,15 @@ namespace CanUDoIt
 		}
 	}
 
+	public class OctalConverter : GenericConverter
+	{
+		public string Convert(int number)
+		{
+      char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7' };
+			return Convert(number, digits);
+		}
+	}
+
 	public class BinaryConverter : GenericConverter
 	{
 		public string Convert(int number)
@@ -62,7 +71,7 @@ namespace CanUDoIt
 		public virtual void TestsForExtraChallenge()
 		{
 			Assert.AreEqual("111", new BinaryConverter().Convert(7));
-			//Assert.AreEqual("55", new OctalConverter().Convert(45));
+			Assert.AreEqual("55", new OctalConverter().Convert(45));
 			//Assert.AreEqual("1f", new HexConverter().Convert(31));
 		}
 	}
