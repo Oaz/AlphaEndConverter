@@ -18,15 +18,15 @@ namespace CanUDoIt
 {
 	public abstract class GenericConverter
 	{
-		public string Convert(int number, char[] digits)
+		public string Convert(int number)
 		{
       var digitForUnits = Digits[number%Radix];
-			return DigitsForGroups(number, Digits) + digitForUnits;
+			return DigitsForGroups(number) + digitForUnits;
 		}
 
-		private string DigitsForGroups(int number, char[] digits)
+		private string DigitsForGroups(int number)
 		{
-			return (number >= Radix) ? Convert(number/Radix, Digits) : "";
+			return (number >= Radix) ? Convert(number/Radix) : "";
 		}
 
     private int Radix { get { return Digits.Length; } }
@@ -35,41 +35,21 @@ namespace CanUDoIt
 
 	public class Converter : GenericConverter
 	{
-		public string Convert(int number)
-		{
-			return Convert(number, Digits);
-		}
-
     override protected char[] Digits { get { return new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', 'y', 'z' }; } }
 	}
 
 	public class HexConverter : GenericConverter
 	{
-		public string Convert(int number)
-		{
-			return Convert(number, Digits);
-		}
-
     override protected char[] Digits { get { return new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' }; } }
 	}
 
 	public class OctalConverter : GenericConverter
 	{
-		public string Convert(int number)
-		{
-			return Convert(number, Digits);
-		}
-
     override protected char[] Digits { get { return new char[] { '0', '1', '2', '3', '4', '5', '6', '7' }; } }
 	}
 
 	public class BinaryConverter : GenericConverter
 	{
-		public string Convert(int number)
-		{
-			return Convert(number, Digits);
-		}
-
     override protected char[] Digits { get { return new char[] { '0', '1' }; } }
 	}
 
