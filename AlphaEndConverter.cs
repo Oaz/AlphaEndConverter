@@ -20,9 +20,15 @@ namespace CanUDoIt
 	{
 		public string Convert(int number, char[] digits)
 		{
-			return ((number >= digits.Length) ?
-                  Convert(number/digits.Length, digits):"")
-                + digits[number%digits.Length].ToString();
+      var radix = digits.Length;
+      var digitForUnits = digits[number%radix];
+			return DigitsForGroups(number, digits) + digitForUnits;
+		}
+
+		private string DigitsForGroups(int number, char[] digits)
+		{
+      var radix = digits.Length;
+			return (number >= radix) ? Convert(number/radix, digits) : "";
 		}
 	}
 
