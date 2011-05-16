@@ -20,17 +20,16 @@ namespace CanUDoIt
 	{
 		public string Convert(int number, char[] digits)
 		{
-      var radix = digits.Length;
-      var digitForUnits = digits[number%radix];
-			return DigitsForGroups(number, digits) + digitForUnits;
+      var digitForUnits = Digits[number%Radix];
+			return DigitsForGroups(number, Digits) + digitForUnits;
 		}
 
 		private string DigitsForGroups(int number, char[] digits)
 		{
-      var radix = digits.Length;
-			return (number >= radix) ? Convert(number/radix, digits) : "";
+			return (number >= Radix) ? Convert(number/Radix, Digits) : "";
 		}
 
+    private int Radix { get { return Digits.Length; } }
     abstract protected char[] Digits { get; }
 	}
 
