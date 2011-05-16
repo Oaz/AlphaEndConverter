@@ -16,7 +16,7 @@ using NUnit.Framework;
 // Is there an easy way to refactor your code/algorithm to support this?
 namespace CanUDoIt
 {
-	public class GenericConverter
+	public abstract class GenericConverter
 	{
 		public string Convert(int number, char[] digits)
 		{
@@ -30,42 +30,48 @@ namespace CanUDoIt
       var radix = digits.Length;
 			return (number >= radix) ? Convert(number/radix, digits) : "";
 		}
+
+    abstract protected char[] Digits { get; }
 	}
 
 	public class Converter : GenericConverter
 	{
 		public string Convert(int number)
 		{
-      char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', 'y', 'z' };
-			return Convert(number, digits);
+			return Convert(number, Digits);
 		}
+
+    override protected char[] Digits { get { return new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', 'y', 'z' }; } }
 	}
 
 	public class HexConverter : GenericConverter
 	{
 		public string Convert(int number)
 		{
-      char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
-			return Convert(number, digits);
+			return Convert(number, Digits);
 		}
+
+    override protected char[] Digits { get { return new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' }; } }
 	}
 
 	public class OctalConverter : GenericConverter
 	{
 		public string Convert(int number)
 		{
-      char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7' };
-			return Convert(number, digits);
+			return Convert(number, Digits);
 		}
+
+    override protected char[] Digits { get { return new char[] { '0', '1', '2', '3', '4', '5', '6', '7' }; } }
 	}
 
 	public class BinaryConverter : GenericConverter
 	{
 		public string Convert(int number)
 		{
-      char[] digits = { '0', '1' };
-			return Convert(number, digits);
+			return Convert(number, Digits);
 		}
+
+    override protected char[] Digits { get { return new char[] { '0', '1' }; } }
 	}
 
 	[TestFixture]
