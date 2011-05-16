@@ -26,7 +26,8 @@ namespace CanUDoIt
 
 		private string DigitsForGroups(int number)
 		{
-			return (number >= Radix) ? Convert(number/Radix) : "";
+      var emptyStringIfNotEnoughUnitsToGroup = string.Empty;
+			return (number >= Radix) ? Convert(number/Radix) : emptyStringIfNotEnoughUnitsToGroup;
 		}
 
     private int Radix { get { return Digits.Length; } }
